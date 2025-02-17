@@ -16,7 +16,13 @@ const SceneSchema = new mongoose.Schema({
   },
   texture: {
     type: String,
-    required: true
+    required: true,
+    description: 'Base64 encoded texture image'
+  },
+  thumbnailTexture: {
+    type: String,
+    required: false,
+    description: 'Base64 encoded thumbnail of texture image'
   }
 }, { 
   timestamps: true
