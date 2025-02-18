@@ -23,6 +23,8 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
 // 路由
 app.use('/api/scenes', scenesRouter);
 
