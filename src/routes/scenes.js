@@ -36,6 +36,7 @@ const isValidBase64Image = (base64String) => {
 // 验证中间件
 const validateScene = [
   body('userId').notEmpty().withMessage('用户ID不能为空'),
+  body('name').notEmpty().withMessage('场景名称不能为空'),
   body('groundWidth').isNumeric().withMessage('地面宽度必须是数字'),
   body('groundDepth').isNumeric().withMessage('地面深度必须是数字'),
   body('texture')
@@ -91,7 +92,7 @@ router.post('/', requireAuthClerk, validateScene, async (req, res) => {
       });
     }
 
-    const { userId, groundWidth, groundDepth, texture, thumbnailTexture } = req.body;
+    const { userId, name, groundWidth, groundDepth, texture, thumbnailTexture } = req.body;
     
     // 检查base64数据大小
     const base64Size = Buffer.from(texture.split(',')[1], 'base64').length;
@@ -104,6 +105,7 @@ router.post('/', requireAuthClerk, validateScene, async (req, res) => {
 
     const scene = new Scene({
       userId,
+      name,
       groundWidth,
       groundDepth,
       texture,

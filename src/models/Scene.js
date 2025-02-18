@@ -6,6 +6,10 @@ const SceneSchema = new mongoose.Schema({
     required: true,
     index: true
   },
+  name: {
+    type: String,
+    required: true
+  },
   groundWidth: {
     type: Number,
     required: true
